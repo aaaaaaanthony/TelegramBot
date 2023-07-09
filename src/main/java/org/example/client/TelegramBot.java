@@ -10,18 +10,19 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
+import org.example.methods.Config;
 
 import java.io.IOException;
 
-public class TelegramBot {
-    private static final String API_TOKEN = "6052233578:AAEwDOV2tg95U0a1gamDRHerbYdeU6jrEVg";
+public class TelegramBot extends Config implements Runnable{
 
-    public static void main(String[] args) {
+    @Override
+    public void run() {
         try {
             long offset = 0; // 起始的更新 ID
 
             while (true) {
-                String url = "https://api.telegram.org/bot" + API_TOKEN + "/getUpdates?offset=" + offset;
+                String url = "https://api.telegram.org/bot" + BOT_TOKEN + "/getUpdates?offset=" + offset;
                 Console.log(url);
                 HttpGet request = new HttpGet(url);
 
