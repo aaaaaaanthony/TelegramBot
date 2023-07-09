@@ -1,8 +1,11 @@
 package org.example.methods;
 
+import cn.hutool.core.io.FileUtil;
 import cn.hutool.core.lang.Console;
+import cn.hutool.http.ContentType;
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
+import cn.hutool.json.JSONUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,30 +87,181 @@ public class Methods extends Config{
     }
 
 
-//    public static void getUpdates(){
-//        String methodName = "/getUpdates";
-//
-//        hutoolHttp = HttpRequest.post("https://api.telegram.org/bot" + tokne + methodName + "?offset=999999")
-//                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
-//                .timeout(20000)//超时，毫秒
-//                .keepAlive(true);
-//
-//        HttpResponse httpResponse = hutoolHttp.executeAsync();
-//        String body = httpResponse.body();
-//        Console.log(body);
-//
-//    }
-//
-//    public static void update(){
-//        String methodName = "/update";
-//
-//        String result2 = HttpRequest.post("https://api.telegram.org/bot" + tokne + methodName)
-//                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
-//                .timeout(20000)//超时，毫秒
-//                .execute().body();
-//        Console.log(result2);
-//    }
+    // Formatting options
+    // TODO 没实现
 
+
+    /**
+     * 转发消息
+     * Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent Message is returned.
+     * 使用这个方法可以转发任何消息, 服务消息不能转发, 转发成功之后,返回{@link org.example.entity.Message}
+     */
+    public static void forwardMessage(){
+        String methodName = "/forwardMessage";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+        objectObjectsHashMap.put("from_chat_id", "569079805");
+        objectObjectsHashMap.put("message_id", "132");
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+
+    }
+
+    /**
+     * 复制消息
+     * Use this method to copy messages of any kind. Service messages and invoice messages can't be copied. A quiz poll can be copied only if the value of the field correct_option_id is known to the bot.
+     * The method is analogous to the method forwardMessage, but the copied message doesn't have a link to the original message. Returns the MessageId of the sent message on success.
+     *
+     * 使用这个方法拷贝任何消息,服务消息和发票消息不能拷贝,只有当机器人知道correct_option_id的值的时候 quiz poll可以拷贝,这方法类似转发消息,但是拷贝消息不能链接原来的消息,返回{@link org.example.entity.MessageId}
+     *
+     * TODO 发票消息?quiz poll?
+     * 返回数据{"ok":true,"result":{"message_id":134}},message_id是最新的消息ID
+     */
+    public static void copyMessage(){
+        String methodName = "/copyMessage";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+        objectObjectsHashMap.put("from_chat_id", "569079805");
+        objectObjectsHashMap.put("message_id", "132");
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+    }
+
+
+    /**
+     * 发送图片
+     * Use this method to send photos. On success, the sent Message is returned.
+     * 使用这个方法发送图片,成功之后,会返回{@link org.example.entity.Message}
+     */
+    public static void sendPhoto(){
+        String methodName = "/sendPhoto";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+        objectObjectsHashMap.put("photo", FileUtil.file("/Users/anthony/Desktop/test.jpeg"));
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.CONTENT_TYPE,ContentType.MULTIPART.getValue())
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(90000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+    }
+
+    // 还有好几个发送媒体文件的先不接了
+
+
+    /**
+     * Use this method to send a native poll. On success, the sent Message is returned.
+     * 使用这个方法,发起本地投票,成功之后,会返回 {@link org.example.entity.Message}
+     */
+    public static void sendPoll(){
+        String methodName = "/sendPoll";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+        objectObjectsHashMap.put("question", "可以测试了吗");
+        objectObjectsHashMap.put("options", JSONUtil.toJsonStr(new String[]{"可以","不可以"}));
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+    }
+
+    /**
+     * Use this method to send an animated emoji that will display a random value. On success, the sent Message is returned.
+     * 使用这个方法,发送动画Emoji 并展示随机数,成功之后,会返回 {@link org.example.entity.Message}
+     */
+    public static void sendDice(){
+        String methodName = "/sendDice";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+    }
+
+    /**
+     * 发送聊天状态
+     * Use this method when you need to tell the user that something is happening on the bot's side.
+     * The status is set for 5 seconds or less (when a message arrives from your bot, Telegram clients clear its typing status). Returns True on success.
+     * 使用这个方法告诉用户 一些事情正在发生
+     * 这个状态是设置5s 后者跟短(到一个消息到达你的机器人,telegram客户端清理打字状态)
+     *
+     */
+    public static void sendChatAction() {
+        String methodName = "/sendChatAction";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+        objectObjectsHashMap.put("action", "typing");
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+    }
+
+    /**
+     * 获取用户图片
+     * Use this method to get a list of profile pictures for a user. Returns a UserProfilePhotos object.
+     * 使用这个方法获取一个用户的资料图片列表,返回{@link org.example.entity.UserProfilePhotos}
+     */
+    public static void getUserProfilePhotos() {
+
+        String methodName = "/getUserProfilePhotos";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("user_id", BOT_CHAT_ID);
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+    }
+
+
+    // getFile 没接
+
+    public static void setChatMenuButton() {
+
+        String methodName = "/setChatMenuButton";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+    }
 
 
 }

@@ -13,6 +13,9 @@ class MethodsTest {
         new Thread(new TelegramBot()).start();
     }
 
+    /**
+     * 都配置文件
+     */
     @Test
     void readConfig(){
         Props props = new Props("config.properties");
@@ -22,8 +25,72 @@ class MethodsTest {
         System.out.println(driver);
     }
 
+    /**
+     * 让机器人主动发消息给指定用户
+     */
     @Test
     void sendMessage() {
         Methods.sendMessage();
     }
+
+    /**
+     * 转发消息
+     */
+    @Test
+    void forwardMessage(){
+        Methods.forwardMessage();
+    }
+
+    /**
+     * 复制消息
+     */
+    @Test
+    void copyMessage(){
+        Methods.copyMessage();
+    }
+
+    /**
+     * 发送图片
+     */
+    @Test
+    void sendPhoto(){
+        Methods.sendPhoto();
+    }
+
+    /**
+     * 发送投票
+     */
+    @Test
+    void sendPoll(){
+        Methods.sendPoll();
+    }
+
+    /**
+     * 发送emoji
+     */
+    @Test
+    void sendDice(){
+        Methods.sendDice();
+    }
+
+    /**
+     * 发送聊天状态
+     */
+    @Test
+    void sendChatAction(){
+        Methods.sendChatAction();
+    }
+
+    /**
+     * 发送聊天状态
+     */
+    @Test
+    void getUserProfilePhotos(){
+        Methods.getUserProfilePhotos();
+    }
+
+
+
+
+
 }
