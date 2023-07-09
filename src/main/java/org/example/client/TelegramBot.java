@@ -1,4 +1,4 @@
-package org.example;
+package org.example.client;
 
 import cn.hutool.core.lang.Console;
 import cn.hutool.json.JSONArray;
