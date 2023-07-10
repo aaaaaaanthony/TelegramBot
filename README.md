@@ -26,4 +26,4 @@ Telegram Bot Java Library 是一个简单易用的Java语言的Telegram Bot库�
 
 
 ## Star History
-[![Star History Chart](https://api.star-history.com/svg?repos=star-history/star-history&type=Date)](https://star-history.com/#star-history/star-history&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=aaaaaaanthony/TelegramBot&type=Date)](https://star-history.com/#aaaaaaanthony/TelegramBot&Date)
