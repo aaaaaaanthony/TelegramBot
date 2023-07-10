@@ -2,6 +2,19 @@
 
 ![GitHub](https://img.shields.io/github/license/aaaaaaanthony/TelegramBot)
 ![GitHub last commit](https://img.shields.io/github/last-commit/aaaaaaanthony/TelegramBot)
+[![Language](https://img.shields.io/github/languages/top/aaaaaaanthony/TelegramBot.svg)](https://github.com/aaaaaaanthony/TelegramBot)
+[![Issues](https://img.shields.io/github/issues/aaaaaaanthony/TelegramBot.svg)](https://github.com/aaaaaaanthony/TelegramBot/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/aaaaaaanthony/TelegramBot.svg)](https://github.com/aaaaaaanthony/TelegramBot/pulls)
+[![Contributors](https://img.shields.io/github/contributors/aaaaaaanthony/TelegramBot.svg)](https://github.com/aaaaaaanthony/TelegramBot/graphs/contributors)
+[![Stars](https://img.shields.io/github/stars/aaaaaaanthony/TelegramBot.svg?style=social)](https://github.com/aaaaaaanthony/TelegramBot/stargazers)
+[![Forks](https://img.shields.io/github/forks/aaaaaaanthony/TelegramBot.svg?style=social)](https://github.com/aaaaaaanthony/TelegramBot/network/members)
+
+
+![Code Size](https://img.shields.io/github/languages/code-size/aaaaaaanthony/TelegramBot.svg)
+![Repository Size](https://img.shields.io/github/repo-size/aaaaaaanthony/TelegramBot.svg)
+![Commit Activity](https://img.shields.io/github/commit-activity/m/aaaaaaanthony/TelegramBot.svg)
+
+
 
 ## 简介
 
