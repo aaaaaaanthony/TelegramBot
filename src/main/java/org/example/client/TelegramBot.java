@@ -43,7 +43,9 @@ public class TelegramBot extends Config implements Runnable{
                         // 可以根据需要进行不同的处理方式，例如保存最后一条更新的ID或计算出下一个offset值
                         offset = calculateNextOffset(responseBody);
 
-//                        Methods.sendMessage("收到");
+                        // 开始处理消息
+                        Handle.handle(responseBody);
+
                     }
                 }
             }
