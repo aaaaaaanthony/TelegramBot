@@ -5,9 +5,12 @@ import cn.hutool.core.lang.Console;
 import cn.hutool.http.ContentType;
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
+import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
+import org.example.HttpClient;
 import org.example.entity.BotCommand;
 import org.example.entity.MenuButtonDefault;
+import org.example.entity.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -22,22 +25,24 @@ public class Methods extends Config{
      * 简单的测试机器人的token,没有参数,返回的是关于机器人的信息,实体类是:{@link org.example.entity.User}
      */
     public static void getMe(){
-        String methodName = "/getMe";
-
-        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
-                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
-                .timeout(20000)//超时，毫秒
-                .execute().body();
-        Console.log(result2);
+        String method = "getMe";
+        String result = HttpClient.post(method, null);
+        JSONObject entries = JSONUtil.parseObj(result);
+        Boolean ok = entries.getBool("ok");
+        if (!ok) {
+            Console.error("发送请求报错,方式是:{},报错详情:{}", method, result);
+        }else {
+            result = entries.getObj("result").toString();
+            User bean = JSONUtil.toBean(result, User.class);
+            System.out.println(bean);
+        }
     }
 
     // TODO 未实现
-    public static void logOut(){
-    }
+    public static void logOut(){}
 
     // TODO 未实现
-    public static void close(){
-    }
+    public static void close(){}
 
     /**
      * 发送消息文本消息
@@ -74,20 +79,21 @@ public class Methods extends Config{
      * }
      */
     public static void sendMessage(){
+        Map<String, Object> map = new HashMap<>();
+        map.put("chat_id", BOT_CHAT_ID);
+        map.put("text", "https://baidu.com");
 
-        String methodName = "/sendMessage";
-
-        Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
-        objectObjectsHashMap.put("text", "Hello World!");
-
-        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
-                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
-                .form(objectObjectsHashMap)
-                .timeout(20000)//超时，毫秒
-                .execute().body();
-        Console.log(result2);
-
+        String method = "sendMessage";
+        String result = HttpClient.post(method, map);
+        JSONObject entries = JSONUtil.parseObj(result);
+        Boolean ok = entries.getBool("ok");
+        if (!ok) {
+            Console.error("发送请求报错,方式是:{},报错详情:{}", method, result);
+        }else {
+            result = entries.getObj("result").toString();
+            User bean = JSONUtil.toBean(result, User.class);
+            System.out.println(bean);
+        }
     }
 
 

@@ -3,7 +3,7 @@ package org.example.entity;
 import lombok.Data;
 
 @Data
-public class User {
+public class User{
 
 
     /**
@@ -17,7 +17,7 @@ public class User {
      * True, if this user is a bot
      * True 表示机器人
      */
-    private Boolean isBoot;
+    private Boolean isBot;
 
     /**
      * User's or bot's first name
