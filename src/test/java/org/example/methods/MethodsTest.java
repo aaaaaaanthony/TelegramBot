@@ -89,6 +89,42 @@ class MethodsTest {
         Methods.getUserProfilePhotos();
     }
 
+    /**
+     * 获取会员数量
+     */
+    @Test
+    void getChatMemberCount(){
+        Methods.getChatMemberCount();
+    }
+
+    /**
+     * 获取会员信息
+     */
+    @Test
+    void getChatMember(){
+        Methods.getChatMember();
+    }
+
+
+    /**
+     * 获取会员信息
+     */
+    @Test
+    void setMyCommands(){
+        Methods.setMyCommands();
+    }
+
+    /**
+     * 获取会员信息
+     */
+    @Test
+    void setChatMenuButton(){
+        Methods.setChatMenuButton();
+    }
+
+
+
+
 
 
 

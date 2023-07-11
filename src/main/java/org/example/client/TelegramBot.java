@@ -11,8 +11,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.example.methods.Config;
+import org.example.methods.Methods;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class TelegramBot extends Config implements Runnable{
 
@@ -40,6 +42,8 @@ public class TelegramBot extends Config implements Runnable{
                         // 更新offset值为下一批更新的起始ID
                         // 可以根据需要进行不同的处理方式，例如保存最后一条更新的ID或计算出下一个offset值
                         offset = calculateNextOffset(responseBody);
+
+//                        Methods.sendMessage("收到");
                     }
                 }
             }

@@ -6,8 +6,12 @@ import cn.hutool.http.ContentType;
 import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONUtil;
+import org.example.entity.BotCommand;
+import org.example.entity.MenuButtonDefault;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Methods extends Config{
@@ -76,6 +80,24 @@ public class Methods extends Config{
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
         objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
         objectObjectsHashMap.put("text", "Hello World!");
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .form(objectObjectsHashMap)
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+
+    }
+
+
+    public static void sendMessage(String text){
+
+        String methodName = "/sendMessage";
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+        objectObjectsHashMap.put("text", text);
 
         String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
                 .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
@@ -248,9 +270,13 @@ public class Methods extends Config{
 
     // getFile 没接
 
-    public static void setChatMenuButton() {
+    /**
+     * Use this method to get the number of members in a chat. Returns Int on success.
+     * 使用这个方法,获取成员的数量,成功返回int数据
+     */
+    public static void getChatMemberCount() {
 
-        String methodName = "/setChatMenuButton";
+        String methodName = "/getChatMemberCount";
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
         objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
@@ -262,6 +288,82 @@ public class Methods extends Config{
                 .execute().body();
         Console.log(result2);
     }
+
+
+    /**
+     * Use this method to get information about a member of a chat. The method is only guaranteed to work for other users if the bot is an administrator in the chat. Returns a ChatMember object on success.
+     * 使用这个方法获取用户信息,只有当机器人是管理员的时候,才能获取
+     */
+    public static void getChatMember() {
+    }
+
+    public static void answerCallbackQuery() {
+    }
+
+    /**
+     * 设置机器人自己的菜单命令
+     * Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
+     * 使用这个方法,改变 机器人的菜单命令,详情访问 https://core.telegram.org/bots/features#commands,成功返回True
+     */
+    public static void setMyCommands() {
+        String methodName = "/setMyCommands";
+
+        // 命令
+        List<BotCommand> list = new ArrayList<>();
+
+        BotCommand botCommand = new BotCommand();
+        botCommand.setCommand("/begin");
+        botCommand.setDescription("/开始");
+
+        BotCommand botCommand2 = new BotCommand();
+        botCommand2.setCommand("/end");
+        botCommand2.setDescription("/结束");
+
+        list.add(botCommand);
+        list.add(botCommand2);
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("commands", list);
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+//                .form(objectObjectsHashMap)
+                .body(JSONUtil.toJsonStr(objectObjectsHashMap))
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+
+
+    }
+
+    /**
+     * 设置机器人自己的菜单命令
+     * Use this method to change the list of the bot's commands. See this manual for more details about bot commands. Returns True on success.
+     * 使用这个方法,改变 机器人的菜单命令,详情访问 https://core.telegram.org/bots/features#commands,成功返回True
+     * TODO 没实现
+     */
+    public static void setChatMenuButton() {
+        String methodName = "/setChatMenuButton";
+
+
+        MenuButtonDefault menuButtonDefault = new MenuButtonDefault();
+        menuButtonDefault.setType("OKKKKKKKK");
+
+        Map<String, Object> objectObjectsHashMap = new HashMap<>();
+        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("menu_button", menuButtonDefault);
+
+
+        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
+                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
+                .body(JSONUtil.toJsonStr(objectObjectsHashMap))
+                .timeout(20000)//超时，毫秒
+                .execute().body();
+        Console.log(result2);
+
+
+    }
+
 
 
 }
