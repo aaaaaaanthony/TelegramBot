@@ -44,75 +44,8 @@ public class Methods extends Config{
     // TODO 未实现
     public static void close(){}
 
-    /**
-     * 发送消息文本消息
-     * Use this method to send text messages. On success, the sent Message is returned.
-     * 使用这个方法发送文本消息,如果发送成功,返回{@link org.example.entity.Message}
-     *
-     * chat_id的获取方法: 调用getUpdates方法,给机器人发个消息,就会有了
-     * {
-     *   "ok": true,
-     *   "result": [
-     *     {
-     *       "update_id": xxxxx,
-     *       "message": {
-     *         "message_id": xxxxx,
-     *         "from": {
-     *           "id": xxxxx,
-     *           "is_bot": false,
-     *           "first_name": "xxxxx",
-     *           "username": "xxxxx",
-     *           "language_code": "zh-hans"
-     *         },
-     *         "chat": {
-     *           // chat_id
-     *           "id": xxxxx,
-     *           "first_name": "xxxxx",
-     *           "username": "xxxxx",
-     *           "type": "private"
-     *         },
-     *         "date": xxxxx,
-     *         "text": "23"
-     *       }
-     *     }
-     *   ]
-     * }
-     */
-    public static void sendMessage(){
-        Map<String, Object> map = new HashMap<>();
-        map.put("chat_id", BOT_CHAT_ID);
-        map.put("text", "https://baidu.com");
-
-        String method = "sendMessage";
-        String result = HttpClient.post(method, map);
-        JSONObject entries = JSONUtil.parseObj(result);
-        Boolean ok = entries.getBool("ok");
-        if (!ok) {
-            Console.error("发送请求报错,方式是:{},报错详情:{}", method, result);
-        }else {
-            result = entries.getObj("result").toString();
-            User bean = JSONUtil.toBean(result, User.class);
-            System.out.println(bean);
-        }
-    }
 
 
-    public static void sendMessage(String text){
-
-        String methodName = "/sendMessage";
-
-        Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
-        objectObjectsHashMap.put("text", text);
-
-        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
-                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
-                .form(objectObjectsHashMap)
-                .timeout(20000)//超时，毫秒
-                .execute().body();
-        Console.log(result2);
-
-    }
 
 
     // Formatting options

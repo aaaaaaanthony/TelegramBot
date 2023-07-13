@@ -9,13 +9,6 @@ class MethodsTest {
         Methods.getMe();
     }
 
-    /**
-     * 让机器人主动发消息给指定用户
-     */
-    @Test
-    void sendMessage() {
-        Methods.sendMessage();
-    }
 
     /**
      * 转发消息

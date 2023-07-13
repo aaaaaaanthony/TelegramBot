@@ -1,5 +1,8 @@
 package org.example.entity;
 
+import lombok.Data;
+
+@Data
 public class Chat {
     /**
      * Unique identifier for this chat

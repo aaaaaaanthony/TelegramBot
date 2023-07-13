@@ -18,18 +18,18 @@ public class HttpClient {
      */
     final static String BOT_API_ADDRESS = "https://api.telegram.org/bot";
 
-    public static String post(String method, Map<String,Object> map){
+    public static String post(String method, Object obj){
 
         String result;
 
         String url=BOT_API_ADDRESS + BOT_TOKEN + "/" + method;
 
-        if (map == null) {
+        if (obj == null) {
             result= HttpRequest.post(url)
                     .execute().body();
         }else {
             result = HttpRequest.post(url)
-                    .body(JSONUtil.toJsonStr(map))
+                    .body(JSONUtil.toJsonStr(obj))
                     .execute().body();
         }
         return result;
