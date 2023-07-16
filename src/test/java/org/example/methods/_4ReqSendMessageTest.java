@@ -1,5 +1,6 @@
 package org.example.methods;
 
+import org.example.KeyboardButton;
 import org.example.entity.*;
 import org.example.entity.request.ReqSendMessage;
 import org.junit.jupiter.api.Test;
@@ -122,9 +123,6 @@ class _4ReqSendMessageTest {
         button2.setCallbackData("2222");
 
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        User user = new User();
-        inlineKeyboardMarkup.setUser(user);
-
         InlineKeyboardButton [][] inlineKeyboardMarkups = new InlineKeyboardButton[2][1];
         inlineKeyboardMarkups[0][0] = button1;
         inlineKeyboardMarkups[1][0] = button2;
@@ -135,6 +133,72 @@ class _4ReqSendMessageTest {
         sendSecond.setChatId(BOT_CHAT_ID);
         sendSecond.setText("InlineKeyboardMarkup 测试Demo");
         sendSecond.setReplyMarkup(inlineKeyboardMarkup);
+        _4SendMessage.sendMessage(sendSecond);
+    }
+
+    /**
+     * 	ReplyKeyboardMarkup 键盘
+     *
+     */
+    @Test
+    void sendMessage9() {
+
+        KeyboardButton button1 = new KeyboardButton();
+        button1.setText("我是按钮1");
+
+        KeyboardButton button2 = new KeyboardButton();
+        button2.setText("我是按钮2");
+
+
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+
+        KeyboardButton[][] buttons = new KeyboardButton[1][2];
+        buttons[0][0] = button1;
+        buttons[0][1] = button2;
+
+
+        replyKeyboardMarkup.setKeyboard(buttons);
+
+
+        // 回复这个消息
+        ReqSendMessage sendSecond = new ReqSendMessage();
+        sendSecond.setChatId(BOT_CHAT_ID);
+        sendSecond.setText("ReplyKeyboardMarkup 测试Demo");
+        sendSecond.setReplyMarkup(replyKeyboardMarkup);
+        _4SendMessage.sendMessage(sendSecond);
+    }
+
+    /**
+     * 	ReplyKeyboardMarkup 键盘
+     * 	测试  one_time_keyboard
+     *
+     */
+    @Test
+    void sendMessage9_1() {
+
+        KeyboardButton button1 = new KeyboardButton();
+        button1.setText("我是按钮3");
+
+        KeyboardButton button2 = new KeyboardButton();
+        button2.setText("我是按钮4");
+
+
+        ReplyKeyboardMarkup replyKeyboardMarkup = new ReplyKeyboardMarkup();
+        replyKeyboardMarkup.setOneTimeKeyboard(true);
+
+        KeyboardButton[][] buttons = new KeyboardButton[1][2];
+        buttons[0][0] = button1;
+        buttons[0][1] = button2;
+
+
+        replyKeyboardMarkup.setKeyboard(buttons);
+
+
+        // 回复这个消息
+        ReqSendMessage sendSecond = new ReqSendMessage();
+        sendSecond.setChatId(BOT_CHAT_ID);
+        sendSecond.setText("ReplyKeyboardMarkup 测试Demo");
+        sendSecond.setReplyMarkup(replyKeyboardMarkup);
         _4SendMessage.sendMessage(sendSecond);
     }
 

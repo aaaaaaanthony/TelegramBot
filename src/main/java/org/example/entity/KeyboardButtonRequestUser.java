@@ -2,6 +2,8 @@ package org.example.entity;
 
 import lombok.Data;
 
+import lombok.Data;
+
 /**
  * This object defines the criteria used to request a suitable user. The identifier of the selected user will be shared with the bot when the corresponding button is pressed.
  *
