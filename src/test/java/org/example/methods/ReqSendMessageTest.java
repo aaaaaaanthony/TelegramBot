@@ -6,9 +6,8 @@ import org.example.entity.request.ReqSendMessage;
 import org.junit.jupiter.api.Test;
 
 import static org.example.methods.Config.BOT_CHAT_ID;
-import static org.junit.jupiter.api.Assertions.*;
 
-class _4ReqSendMessageTest {
+class ReqSendMessageTest {
 
     /**
      * 让机器人主动发消息给指定用户,只是简单的文本
@@ -19,7 +18,7 @@ class _4ReqSendMessageTest {
         reqSendMessage.setChatId(BOT_CHAT_ID);
         // 这里的链接是可以预览的
         reqSendMessage.setText("https://baidu.com");
-        _4SendMessage.sendMessage(reqSendMessage);
+        SendMessage.sendMessage(reqSendMessage);
     }
 
     /**
@@ -40,7 +39,7 @@ class _4ReqSendMessageTest {
         // 这里的链接是可以预览的
         reqSendMessage.setText("https://baidu.com");
         reqSendMessage.setDisableWebPagePreview(true);
-        _4SendMessage.sendMessage(reqSendMessage);
+        SendMessage.sendMessage(reqSendMessage);
     }
 
     /**
@@ -54,7 +53,7 @@ class _4ReqSendMessageTest {
         reqSendMessage.setText("https://baidu.com");
         reqSendMessage.setDisableWebPagePreview(true);
         reqSendMessage.setDisableNotification(true);
-        _4SendMessage.sendMessage(reqSendMessage);
+        SendMessage.sendMessage(reqSendMessage);
     }
 
 
@@ -70,7 +69,7 @@ class _4ReqSendMessageTest {
         reqSendMessage.setDisableWebPagePreview(true);
         reqSendMessage.setDisableNotification(true);
         reqSendMessage.setProtectContent(true);
-        _4SendMessage.sendMessage(reqSendMessage);
+        SendMessage.sendMessage(reqSendMessage);
     }
 
     /**
@@ -83,7 +82,7 @@ class _4ReqSendMessageTest {
         ReqSendMessage sendFirst = new ReqSendMessage();
         sendFirst.setChatId(BOT_CHAT_ID);
         sendFirst.setText("https://baidu.com");
-        Message message = _4SendMessage.sendMessage(sendFirst);
+        Message message = SendMessage.sendMessage(sendFirst);
 
         System.out.println("============================================================");
 
@@ -92,7 +91,7 @@ class _4ReqSendMessageTest {
         sendSecond.setChatId(BOT_CHAT_ID);
         sendSecond.setText("OK  OK  OK  OK  OK");
         sendSecond.setReplyToMessageId(message.getMessageId());
-        _4SendMessage.sendMessage(sendSecond);
+        SendMessage.sendMessage(sendSecond);
     }
 
     /**
@@ -105,7 +104,7 @@ class _4ReqSendMessageTest {
         sendSecond.setChatId(BOT_CHAT_ID);
         sendSecond.setText("OK  OK  OK  OK  OK");
         sendSecond.setAllowSendingWithoutReply(false);
-        _4SendMessage.sendMessage(sendSecond);
+        SendMessage.sendMessage(sendSecond);
     }
 
     /**
@@ -133,7 +132,7 @@ class _4ReqSendMessageTest {
         sendSecond.setChatId(BOT_CHAT_ID);
         sendSecond.setText("InlineKeyboardMarkup 测试Demo");
         sendSecond.setReplyMarkup(inlineKeyboardMarkup);
-        _4SendMessage.sendMessage(sendSecond);
+        SendMessage.sendMessage(sendSecond);
     }
 
     /**
@@ -165,7 +164,7 @@ class _4ReqSendMessageTest {
         sendSecond.setChatId(BOT_CHAT_ID);
         sendSecond.setText("ReplyKeyboardMarkup 测试Demo");
         sendSecond.setReplyMarkup(replyKeyboardMarkup);
-        _4SendMessage.sendMessage(sendSecond);
+        SendMessage.sendMessage(sendSecond);
     }
 
     /**
@@ -199,7 +198,7 @@ class _4ReqSendMessageTest {
         sendSecond.setChatId(BOT_CHAT_ID);
         sendSecond.setText("ReplyKeyboardMarkup 测试Demo");
         sendSecond.setReplyMarkup(replyKeyboardMarkup);
-        _4SendMessage.sendMessage(sendSecond);
+        SendMessage.sendMessage(sendSecond);
     }
 
     /**
@@ -217,7 +216,7 @@ class _4ReqSendMessageTest {
         sendSecond.setChatId(BOT_CHAT_ID);
         sendSecond.setText("删除输入框外面的键盘 测试Demo");
         sendSecond.setReplyMarkup(replyKeyboardRemove);
-        _4SendMessage.sendMessage(sendSecond);
+        SendMessage.sendMessage(sendSecond);
     }
 
     /**
@@ -235,7 +234,7 @@ class _4ReqSendMessageTest {
         sendSecond.setChatId(BOT_CHAT_ID);
         sendSecond.setText("ForceReply 测试Demo");
         sendSecond.setReplyMarkup(replyKeyboardRemove);
-        _4SendMessage.sendMessage(sendSecond);
+        SendMessage.sendMessage(sendSecond);
     }
 
 

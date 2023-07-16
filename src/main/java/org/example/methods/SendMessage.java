@@ -1,14 +1,12 @@
 package org.example.methods;
 
-import cn.hutool.core.lang.Console;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
 import org.example.HttpClient;
 import org.example.entity.Message;
-import org.example.entity.User;
 import org.example.entity.request.ReqSendMessage;
 
-public class _4SendMessage {
+public class SendMessage {
 
 
     /**

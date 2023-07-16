@@ -57,22 +57,7 @@ public class Methods extends Config{
      * Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent Message is returned.
      * 使用这个方法可以转发任何消息, 服务消息不能转发, 转发成功之后,返回{@link org.example.entity.Message}
      */
-    public static void forwardMessage(){
-        String methodName = "/forwardMessage";
 
-        Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
-        objectObjectsHashMap.put("from_chat_id", "569079805");
-        objectObjectsHashMap.put("message_id", "132");
-
-        String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
-                .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
-                .form(objectObjectsHashMap)
-                .timeout(20000)//超时，毫秒
-                .execute().body();
-        Console.log(result2);
-
-    }
 
     /**
      * 复制消息

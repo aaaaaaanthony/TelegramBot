@@ -10,13 +10,7 @@ class MethodsTest {
     }
 
 
-    /**
-     * 转发消息
-     */
-    @Test
-    void forwardMessage(){
-        Methods.forwardMessage();
-    }
+
 
     /**
      * 复制消息
