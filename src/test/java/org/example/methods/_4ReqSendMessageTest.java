@@ -202,6 +202,42 @@ class _4ReqSendMessageTest {
         _4SendMessage.sendMessage(sendSecond);
     }
 
+    /**
+     * 	ReplyKeyboardRemove 键盘
+     * 	效果就是删除了
+     *
+     */
+    @Test
+    void sendMessage10() {
+        ReplyKeyboardRemove replyKeyboardRemove = new ReplyKeyboardRemove();
+        replyKeyboardRemove.setRemoveKeyboard(true);
+
+        // 回复这个消息
+        ReqSendMessage sendSecond = new ReqSendMessage();
+        sendSecond.setChatId(BOT_CHAT_ID);
+        sendSecond.setText("删除输入框外面的键盘 测试Demo");
+        sendSecond.setReplyMarkup(replyKeyboardRemove);
+        _4SendMessage.sendMessage(sendSecond);
+    }
+
+    /**
+     * 	ForceReply 键盘
+     *
+     */
+    @Test
+    void sendMessage11() {
+        ForceReply replyKeyboardRemove = new ForceReply();
+        replyKeyboardRemove.setForceReply(true);
+        replyKeyboardRemove.setInputFieldPlaceholder("请输入回复的消息");
+
+        // 回复这个消息
+        ReqSendMessage sendSecond = new ReqSendMessage();
+        sendSecond.setChatId(BOT_CHAT_ID);
+        sendSecond.setText("ForceReply 测试Demo");
+        sendSecond.setReplyMarkup(replyKeyboardRemove);
+        _4SendMessage.sendMessage(sendSecond);
+    }
+
 
 
 }
