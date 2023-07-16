@@ -1,9 +1,6 @@
 package org.example.methods;
 
-import org.example.entity.InlineKeyboardButton;
-import org.example.entity.InlineKeyboardMarkup;
-import org.example.entity.Message;
-import org.example.entity.User;
+import org.example.entity.*;
 import org.example.entity.request.ReqSendMessage;
 import org.junit.jupiter.api.Test;
 
@@ -111,31 +108,36 @@ class _4ReqSendMessageTest {
     }
 
     /**
-     * 各种键盘
+     * 	InlineKeyboardMarkup 键盘
      */
     @Test
     void sendMessage8() {
 
         InlineKeyboardButton button1 = new InlineKeyboardButton();
+        button1.setCallbackData("111");
         button1.setText("我是按钮1");
 
         InlineKeyboardButton button2 = new InlineKeyboardButton();
         button2.setText("我是按钮2");
-
-
-        InlineKeyboardButton[][] list = new InlineKeyboardButton[2][1];
-        list[0][0] = button1;
-        list[1][0] = button2;
+        button2.setCallbackData("2222");
 
         InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
-        inlineKeyboardMarkup.setInlineKeyboard(list);
+        User user = new User();
+        inlineKeyboardMarkup.setUser(user);
+
+        InlineKeyboardButton [][] inlineKeyboardMarkups = new InlineKeyboardButton[2][1];
+        inlineKeyboardMarkups[0][0] = button1;
+        inlineKeyboardMarkups[1][0] = button2;
+        inlineKeyboardMarkup.setInlineKeyboard(inlineKeyboardMarkups);
 
         // 回复这个消息
         ReqSendMessage sendSecond = new ReqSendMessage();
         sendSecond.setChatId(BOT_CHAT_ID);
-        sendSecond.setText("abc");
+        sendSecond.setText("InlineKeyboardMarkup 测试Demo");
         sendSecond.setReplyMarkup(inlineKeyboardMarkup);
-
         _4SendMessage.sendMessage(sendSecond);
     }
+
+
+
 }

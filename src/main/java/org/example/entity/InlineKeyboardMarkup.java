@@ -10,5 +10,7 @@ public class InlineKeyboardMarkup {
      */
     @Alias("inline_keyboard")
     private InlineKeyboardButton[][] inlineKeyboard;
+
+    private User user;
 }
 

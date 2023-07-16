@@ -18,6 +18,8 @@ public class InlineKeyboardButton {
 
     /**
      * Optional. Data to be sent in a callback query to the bot when button is pressed, 1-64 bytes
+     * 可选的,在点击按钮之后,按钮信息会被发送到 机器人开发者的服务器上
+     * 虽然是可选的,不设置,会有报错==>can't parse inline keyboard button: Text buttons are unallowed in the inline keyboard
      */
     @Alias("callback_data")
     private String callbackData;
