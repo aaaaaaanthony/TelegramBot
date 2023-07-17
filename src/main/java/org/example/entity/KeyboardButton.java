@@ -1,4 +1,4 @@
-package org.example;
+package org.example.entity;
 
 import cn.hutool.core.annotation.Alias;
 import lombok.Data;

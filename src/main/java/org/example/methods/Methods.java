@@ -7,7 +7,7 @@ import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import org.example.HttpClient;
+import org.example.util.HttpClient;
 import org.example.entity.BotCommand;
 import org.example.entity.MenuButtonDefault;
 import org.example.entity.User;

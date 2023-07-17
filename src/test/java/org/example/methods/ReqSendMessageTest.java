@@ -1,6 +1,6 @@
 package org.example.methods;
 
-import org.example.KeyboardButton;
+import org.example.entity.KeyboardButton;
 import org.example.entity.*;
 import org.example.entity.request.ReqSendMessage;
 import org.junit.jupiter.api.Test;

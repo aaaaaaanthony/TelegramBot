@@ -1,20 +1,10 @@
 package org.example.methods;
 
-import cn.hutool.core.lang.Console;
-import cn.hutool.http.Header;
-import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import org.example.HttpClient;
+import org.example.util.HttpClient;
 import org.example.entity.Message;
 import org.example.entity.request.ReqForwardMessage;
-import org.example.entity.request.ReqSendMessage;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static org.example.methods.Config.BOT_CHAT_ID;
-import static org.example.methods.Config.BOT_TOKEN;
 
 public class ForwardMessage {
 

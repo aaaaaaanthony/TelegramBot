@@ -2,7 +2,6 @@ package org.example.entity;
 
 import cn.hutool.core.annotation.Alias;
 import lombok.Data;
-import org.example.KeyboardButton;
 
 /**
  * This object represents a custom keyboard with reply options.

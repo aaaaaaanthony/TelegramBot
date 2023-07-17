@@ -1,4 +1,4 @@
-package org.example;
+package org.example.util;
 
 import cn.hutool.core.lang.Console;
 import cn.hutool.http.HttpRequest;

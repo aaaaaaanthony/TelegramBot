@@ -2,7 +2,7 @@ package org.example.methods;
 
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import org.example.HttpClient;
+import org.example.util.HttpClient;
 import org.example.entity.Message;
 import org.example.entity.request.ReqSendMessage;
 
