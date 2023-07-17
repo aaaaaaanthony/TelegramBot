@@ -1,11 +1,7 @@
 package org.example;
 
-import cn.hutool.json.JSONUtil;
 import org.example.client.AbstractHandle;
-import org.example.entity.Message;
 import org.example.entity.Update;
-
-import java.util.List;
 
 /**
  * 默认的处理器
