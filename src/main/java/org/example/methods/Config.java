@@ -1,8 +1,9 @@
 package org.example.methods;
 
 import cn.hutool.setting.dialect.Props;
+import org.example.entity.Message;
 
-public class Config {
+public abstract class Config {
 
     /**
      * 机器人TOKEN
