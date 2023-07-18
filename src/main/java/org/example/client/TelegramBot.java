@@ -1,10 +1,8 @@
 package org.example.client;
 
-import cn.hutool.core.lang.Console;
 import cn.hutool.json.JSONArray;
 import cn.hutool.json.JSONException;
 import cn.hutool.json.JSONObject;
-import cn.hutool.json.JSONUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -13,11 +11,10 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
 import org.example.DefaultHandler;
-import org.example.entity.Message;
 
 import java.io.IOException;
 
-import static org.example.methods.Config.BOT_TOKEN;
+import static org.example.util.Config.BOT_TOKEN;
 
 @Slf4j
 public class TelegramBot implements Runnable{

@@ -7,24 +7,25 @@ import cn.hutool.http.Header;
 import cn.hutool.http.HttpRequest;
 import cn.hutool.json.JSONObject;
 import cn.hutool.json.JSONUtil;
-import org.example.util.HttpClient;
 import org.example.entity.BotCommand;
 import org.example.entity.MenuButtonDefault;
 import org.example.entity.User;
+import org.example.util.Config;
+import org.example.util.HttpClient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Methods extends Config{
+public class Methods extends Config {
 
     /**
      * 获取个人信息
      * A simple method for testing your bot's authentication token. Requires no parameters. Returns basic information about the bot in form of a User object.
      * 简单的测试机器人的token,没有参数,返回的是关于机器人的信息,实体类是:{@link org.example.entity.User}
      */
-    public static void getMe(){
+    public static void getMe() {
         String method = "getMe";
         String result = HttpClient.post(method, null);
         JSONObject entries = JSONUtil.parseObj(result);
@@ -38,25 +39,7 @@ public class Methods extends Config{
         }
     }
 
-    // TODO 未实现
-    public static void logOut(){}
 
-    // TODO 未实现
-    public static void close(){}
-
-
-
-
-
-    // Formatting options
-    // TODO 没实现
-
-
-    /**
-     * 转发消息
-     * Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent Message is returned.
-     * 使用这个方法可以转发任何消息, 服务消息不能转发, 转发成功之后,返回{@link org.example.entity.Message}
-     */
 
 
     /**
@@ -73,7 +56,7 @@ public class Methods extends Config{
         String methodName = "/copyMessage";
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
         objectObjectsHashMap.put("from_chat_id", "569079805");
         objectObjectsHashMap.put("message_id", "132");
 
@@ -95,7 +78,7 @@ public class Methods extends Config{
         String methodName = "/sendPhoto";
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
         objectObjectsHashMap.put("photo", FileUtil.file("/Users/anthony/Desktop/test.jpeg"));
 
         String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
@@ -107,8 +90,6 @@ public class Methods extends Config{
         Console.log(result2);
     }
 
-    // 还有好几个发送媒体文件的先不接了
-
 
     /**
      * Use this method to send a native poll. On success, the sent Message is returned.
@@ -118,7 +99,7 @@ public class Methods extends Config{
         String methodName = "/sendPoll";
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
         objectObjectsHashMap.put("question", "可以测试了吗");
         objectObjectsHashMap.put("options", JSONUtil.toJsonStr(new String[]{"可以","不可以"}));
 
@@ -138,7 +119,7 @@ public class Methods extends Config{
         String methodName = "/sendDice";
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
 
         String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
                 .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
@@ -160,7 +141,7 @@ public class Methods extends Config{
         String methodName = "/sendChatAction";
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
         objectObjectsHashMap.put("action", "typing");
 
         String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
@@ -181,7 +162,7 @@ public class Methods extends Config{
         String methodName = "/getUserProfilePhotos";
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("user_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("user_id", BOT_CHAT_ID);
 
         String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
                 .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
@@ -203,7 +184,7 @@ public class Methods extends Config{
         String methodName = "/getChatMemberCount";
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
 
         String result2 = HttpRequest.post("https://api.telegram.org/bot" + BOT_TOKEN + methodName)
                 .header(Header.USER_AGENT, "Hutool http")//头信息，多个头信息多次调用此方法即可
@@ -274,7 +255,7 @@ public class Methods extends Config{
         menuButtonDefault.setType("OKKKKKKKK");
 
         Map<String, Object> objectObjectsHashMap = new HashMap<>();
-        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
+//        objectObjectsHashMap.put("chat_id", BOT_CHAT_ID);
 //        objectObjectsHashMap.put("menu_button", menuButtonDefault);
 
 

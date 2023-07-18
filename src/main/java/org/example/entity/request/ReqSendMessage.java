@@ -2,11 +2,13 @@ package org.example.entity.request;
 
 import cn.hutool.core.annotation.Alias;
 import lombok.Data;
+import org.example.anno.RequestMethod;
 import org.example.entity.MessageEntity;
 
 import java.util.List;
 
 @Data
+@RequestMethod("sendMessage")
 public class ReqSendMessage {
 
     /**

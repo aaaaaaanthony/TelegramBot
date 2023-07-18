@@ -2,8 +2,16 @@ package org.example.entity.request;
 
 import cn.hutool.core.annotation.Alias;
 import lombok.Data;
+import org.example.anno.RequestMethod;
 
+/**
+ * 转发消息
+ * Use this method to forward messages of any kind. Service messages can't be forwarded. On success, the sent Message is returned.
+ * 使用这个方法可以转发任何消息, 服务消息不能转发, 转发成功之后,返回{@link org.example.entity.Message}
+ * TODO 有时候可以,有时候不行没搞懂
+ */
 @Data
+@RequestMethod("forwardMessage")
 public class ReqForwardMessage {
 
     /**
@@ -40,6 +48,7 @@ public class ReqForwardMessage {
 
     /**
      * The message identifier in the chat specified in from_chat_id.
+     * 比如A群发了一条消息,消息的ID=10086   就是messageId
      */
     @Alias("message_id")
     private Integer messageId;

@@ -49,6 +49,7 @@ public class Update {
     /**
      * New incoming callback query.
      */
+    @Alias("callback_query")
     private CallbackQuery callbackQuery;
 
     /**
